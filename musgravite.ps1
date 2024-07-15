@@ -60,6 +60,22 @@ function Choose-Cpp-Compiler {
 
 
 
+function Remove-Musgravite-Repo {
+    Write-Host "The installation was successful."
+    $option = Read-Host "Do you want to remove the official musgravite repository from your workflow? [Y / N]"
+
+    if ($option -eq 'Y') {
+        if (Test-Path "..\Musgravite" -PathType Container) {
+            Remove-Item -Path "..\Musgravite" -Recurse -Force
+        }
+        else {
+            Write-Host "Musgravite repository not found."
+        }
+    }
+}
+
+
+
 
 
 param(

@@ -26,6 +26,10 @@
             void ADD_TEST_TEARDOWN_C(const char* suite, const char* test, void (*func)(void), void (*teardown)(void));
             void ADD_TEST_TEARDOWN_TIMEOUT_C(const char* suite, const char* test, void (*func)(void), void (*teardown)(void), int timeout);
             void ADD_TEST_SETUP_TEARDOWN_TIMEOUT_C(const char* suite, const char* test, void (*func)(void), void (*setup)(void), void (*teardown)(void), int timeout);
+        
+
+        
+            void IGNORE_TEST_C(const char* test);
         #ifdef
     }
 #endif

@@ -29,3 +29,15 @@
 #define MAGENTA "\033[35m"
 #define CYAN    "\033[36m"
 #define BOLD    "\033[1m"
+
+
+
+
+
+bool useColor = true;
+
+
+
+void disableColors() {
+    useColor = false;
+}

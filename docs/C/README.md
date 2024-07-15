@@ -19,3 +19,10 @@ Before I go any further, you need to decide: do you want to do everything manual
 
 #### Advantages of using the library manually
 You'll have more control over what's in your project and what isn't, as you can define your workflow and even which files will be kept or not.
+
+#### Advantages of using automation scripts
+Automation scripts have several advantages. They define a workflow automatically, creating _libs folders to add the library headers and scripts and _tests folders for... the tests? <br>
+You can also create a make to compile the tests automatically with compilers like gcc and clang. <br>
+Finally, they remove all the files that aren't necessary for your project, minimizing the space taken up.
+
+<br>

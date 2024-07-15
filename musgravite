@@ -22,6 +22,7 @@ display_menu() {
 
 createWorkSpace() {
     mkdir -p ../_libs/musgravite
+    mkdir -p ../_tests/
 }
 
 

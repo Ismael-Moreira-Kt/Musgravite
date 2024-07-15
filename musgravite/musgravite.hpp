@@ -135,6 +135,13 @@ class Musgravite {
         std::function<void()> setup;
         std::function<void()> teardown;
         std::chrono::seconds timeout;
+
+
+        bool isAsyncTest(const std::function<void()>& f) const {
+            std::string funcName = name;
+
+            return funcName.size() > 5 && funcName.compare(funcName.size() - 5, 5, "Async") == 0;
+        }
 }
 
 

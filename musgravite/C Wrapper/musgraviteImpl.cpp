@@ -42,4 +42,14 @@ extern "C" {
             global_runner = nullptr;
         }
     }
+
+
+
+    void runAllTestsC() {
+        if (global_runner == nullptr) {
+            return;
+        }
+
+        global_runner->runner.runAllTests();
+    }
 }

@@ -148,4 +148,27 @@ class Musgravite {
 
 
 
+class MusgraviteRunner {
+    public:
+        void addTest(
+            const std::string& suiteName,
+            const std::string& testName,
+
+            std::function<void()> func,
+            std::function<void()> setup = nullptr,
+            std::function<void()> teardown = nullptr,
+            std::chrono::seconds timeout = std::chrono::seconds(30))
+        {
+            if (suites.find(suiteName) == suites.end()) {
+                suites[suiteName] = std::vector<Musgravite>();
+            }
+
+            suites[suiteName].emplace_back(testName, func, setup, teardown, timeout);
+        }
+}
+
+
+
+
+
 #endif

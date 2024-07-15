@@ -1,0 +1,16 @@
+CXXFLAGS := -I./_libs
+
+SOURCES := $(wildcard _tests/*.cpp)
+OBJECTS := $(SOURCES:.cpp=.o)
+EXECUTABLE := tests
+
+all: $(EXECUTABLE)
+
+$(EXECUTABLE): $(OBJECTS)
+	$(CXX) $(CXXFLAGS) $^ -o $@
+
+_tests/%.o: _tests/%.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+clean:
+	rm -f _tests/*.o $(EXECUTABLE)

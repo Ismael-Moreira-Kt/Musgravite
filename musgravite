@@ -1,0 +1,158 @@
+#!/bin/bash
+
+
+
+
+
+display_menu() {
+    echo -e "\n\n-------------------- Musgravite --------------------\n"
+    echo "1) Use musgravite with C"
+    echo "2) Use musgravite with C++"
+    echo "3) Use musgravite with D"
+    echo "4) Use musgravite with Nim"
+    echo "0) Exit"
+    echo -e "\n----------------------------------------------------\n\n"
+}
+
+
+
+createWorkSpace() {
+    mkdir -p ../_libs/musgravite
+    mkdir -p ../_tests/
+}
+
+
+
+chooseCCompiler() {
+    echo "Which compiler do you want to use for C?"
+    echo "1) GCC"
+    echo "2) Clang"
+
+    read -p "Enter the option number: " option
+
+    case $option in
+        1) COMPILER=gcc ;;
+        2) COMPILER=clang ;;
+        *) echo "Invalid option. Defaulting to GCC."; COMPILER=gcc ;;
+    esac
+
+    export CC=$COMPILER
+    mv ./helpers/make ../
+}
+
+
+
+chooseCppCompiler() {
+    echo "Which compiler do you want to use for C++?"
+    echo "1) G++"
+    echo "2) Clang++"
+
+    read -p "Enter the option number: " option
+
+    case $option in
+        1) COMPILER=g++ ;;
+        2) COMPILER=clang++ ;;
+        *) echo "Invalid option. Defaulting to G++."; COMPILER=g++ ;;
+    esac
+
+    export CXX=$COMPILER
+    mv ./helpers/make++ ../
+    mv ../make++ ../make
+}
+
+
+
+removeMusgraviteRepo() {
+    echo "The installation was successful."
+    echo "Do you want to remove the official musgravite repository from your workflow? [Y / N]"
+
+    read -p "Enter the option: " option
+
+    if [[ "$option" == 'Y' ]]; then
+        if [ -d "../Musgravite" ]; then
+            rm -r ../Musgravite
+        else
+            echo "Musgravite repository not found."
+        fi
+    fi
+}
+
+
+
+musgraviteC() {
+    createWorkSpace
+
+    if [ -d ./musgravite/'C Wrapper' ]; then
+        mv ./musgravite/'C Wrapper'/* ../_libs/musgravite/
+    else
+        echo "Error: Directory 'C Wrapper' not found."
+        return 1
+    fi
+
+    if [ -f ./musgravite/musgravite.hpp ]; then
+        mv ./musgravite/musgravite.hpp ../_libs/musgravite
+    else
+        echo "Error: File 'musgravite.hpp' not found."
+        return 1
+    fi
+
+    echo "Do you want to use a pre-configured make file for testing? [Y / N]"
+    read -p "Enter the option: " option
+
+    if [[ "$option" == 'Y' ]]; then
+        chooseCCompiler
+    fi
+
+    removeMusgraviteRepo
+}
+
+
+
+musgraviteCpp() {
+    createWorkSpace
+
+    if [ -f ./musgravite/musgravite.hpp ]; then
+        mv ./musgravite/musgravite.hpp ../_libs/musgravite
+    else
+        echo "Error: File 'musgravite.hpp' not found."
+        return 1
+    fi
+
+    echo "Do you want to use a pre-configured make file for testing? [Y / N]"
+    read -p "Enter the option: " option
+
+    if [[ "$option" == 'Y' ]]; then
+        chooseCppCompiler
+    fi
+
+    removeMusgraviteRepo
+}
+
+
+
+
+
+if [ "$1" == "-c" ]; then
+    musgraviteC
+    exit 0
+elif [ "$1" == "-cpp" ]; then
+    musgraviteCpp
+    exit 0
+fi
+
+
+
+
+
+while true; do
+    display_menu
+
+    read -p "Enter the option number: " option
+
+    case $option in
+        1) musgraviteC ;;
+        2) musgraviteCpp ;;
+        0) echo "Exiting..."; exit 0 ;;
+        *) echo "Invalid option. Please try again." ;;
+    esac
+done

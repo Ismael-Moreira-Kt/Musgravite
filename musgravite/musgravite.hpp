@@ -249,6 +249,11 @@ class MusgraviteRunner {
 
 
 
+#define IGNORE_TEST(test) \
+    printColored("Test " #test " ignored.", YELLOW);
+
+
+
 
 
 #endif

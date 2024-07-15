@@ -10,9 +10,12 @@
         #endif
 
 
-
             typedef struct MusgraviteRunnerImpl MusgraviteRunnerImpl;
 
+
+            void runAllTestsC(void);
+            void initializeMusgraviteRunner(void);
+            void cleanupMusgraviteRunner(void);
 
 
         #ifdef

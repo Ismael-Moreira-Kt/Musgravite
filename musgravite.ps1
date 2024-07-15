@@ -24,6 +24,24 @@ function Create-WorkSpace {
 
 
 
+function Choose-C-Compiler {
+    Write-Host "Which compiler do you want to use for C?"
+    Write-Host "1) GCC"
+    Write-Host "2) Clang"
+
+    $option = Read-Host "Enter the option number"
+
+    switch ($option) {
+        1 { $env:CC = "gcc" }
+        2 { $env:CC = "clang" }
+        Default { Write-Host "Invalid option. Defaulting to GCC."; $env:CC = "gcc" }
+    }
+
+    Move-Item -Path ".\helpers\make" -Destination "..\"
+}
+
+
+
 
 
 param(

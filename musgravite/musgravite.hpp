@@ -165,6 +165,64 @@ class MusgraviteRunner {
 
             suites[suiteName].emplace_back(testName, func, setup, teardown, timeout);
         }
+
+
+        void runAllTests() {
+            int totalPassed = 0;
+            int totalTests = 0;
+            double totalTime = 0.0;
+
+            for (const auto& suite : suites) {
+                int passed = 0;
+                double suiteTime = 0.0;
+
+                std::vector<std::string> failedTests;
+
+                printColored("Running suite: " + suite.first, CYAN);
+
+                for (auto& test : suite.second) {
+                    try {
+                        auto start = std::chrono::high_resolution_clock::now();
+
+                        test.run();
+
+                        auto end = std::chrono::high_resolution_clock::now();
+
+                        std::chrono::duration<double, std::milli> duration = end - start; // Duration in milliseconds
+
+                        suiteTime += duration.count();
+                        passed++;
+                    } catch (const std::exception& e) {
+                        failedTests.push_back(test.getName() + ": " + e.what());
+                    }
+                }
+
+                double averageTime = suite.second.empty() ? 0.0 : suiteTime / suite.second.size();
+                totalTime += suiteTime;
+
+                printColored(std::to_string(passed) + "/" + std::to_string(suite.second.size()) + " tests passed in suite " + suite.first, GREEN);
+                printColored("Suite " + suite.first + " total time: " + std::to_string(suiteTime) + " milliseconds.", BLUE);
+                printColored("Suite " + suite.first + " average time per test: " + std::to_string(averageTime) + " milliseconds.", RESET);
+
+                if (!failedTests.empty()) {
+                    printColored("Failed tests:", RED);
+
+                    for (const auto& fail : failedTests) {
+                        printColored(fail, RED);
+                    }
+                }
+
+                totalPassed += passed;
+                totalTests += suite.second.size();
+            }
+
+            double overallAverageTime = totalTests == 0 ? 0.0 : totalTime / totalTests;
+
+            printColored("Overall results:", BOLD);
+            printColored(std::to_string(totalPassed) + "/" + std::to_string(totalTests) + " tests passed across all suites.", GREEN);
+            printColored("Total time for all suites: " + std::to_string(totalTime) + " milliseconds.", BLUE);
+            printColored("Overall average time per test: " + std::to_string(overallAverageTime) + " milliseconds.", RESET);
+        }
 }
 
 

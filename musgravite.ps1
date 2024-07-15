@@ -42,6 +42,24 @@ function Choose-C-Compiler {
 
 
 
+function Choose-Cpp-Compiler {
+    Write-Host "Which compiler do you want to use for C++?"
+    Write-Host "1) G++"
+    Write-Host "2) Clang++"
+
+    $option = Read-Host "Enter the option number"
+
+    switch ($option) {
+        1 { $env:CXX = "g++" }
+        2 { $env:CXX = "clang++" }
+        Default { Write-Host "Invalid option. Defaulting to G++."; $env:CXX = "g++" }
+    }
+
+    Move-Item -Path ".\helpers\make++" -Destination "..\make"
+}
+
+
+
 
 
 param(

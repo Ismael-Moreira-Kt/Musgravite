@@ -27,13 +27,52 @@ createWorkSpace() {
 
 
 
+chooseCCompiler() {
+    echo "Which compiler do you want to use for C?"
+    echo "1) GCC"
+    echo "2) Clang"
+
+    read -p "Enter the option number: " option
+
+    case $option in
+        1) COMPILER=gcc ;;
+        2) COMPILER=clang ;;
+        *) echo "Invalid option. Defaulting to GCC."; COMPILER=gcc ;;
+    esac
+
+    export CC=$COMPILER
+    mv ./helpers/make ../
+}
+
+
+
+chooseCppCompiler() {
+    echo "Which compiler do you want to use for C++?"
+    echo "1) G++"
+    echo "2) Clang++"
+
+    read -p "Enter the option number: " option
+
+    case $option in
+        1) COMPILER=g++ ;;
+        2) COMPILER=clang++ ;;
+        *) echo "Invalid option. Defaulting to G++."; COMPILER=g++ ;;
+    esac
+
+    export CXX=$COMPILER
+    mv ./helpers/make++ ../
+    mv ../make++ ../make
+}
+
+
+
 removeMusgraviteRepo() {
     echo "The installation was successful."
     echo "Do you want to remove the official musgravite repository from your workflow? [Y / N]"
 
-    read -p "Enter the option number: " option
+    read -p "Enter the option: " option
 
-    if $option == 'Y':
+    if [[ "$option" == 'Y' ]]; then
         cd .. && rm -r Musgravite
     fi
 }
@@ -43,8 +82,7 @@ removeMusgraviteRepo() {
 musgraviteC() {
     createWorkSpace
 
-
-    if [ -f ./musgravite/'C Wrapper' ]; then
+    if [ -d ./musgravite/'C Wrapper' ]; then
         mv ./musgravite/'C Wrapper'/* ../_libs/musgravite/
     else
         echo "Error: Directory 'C Wrapper' not found."
@@ -58,6 +96,12 @@ musgraviteC() {
         return 1
     fi
 
+    echo "Do you want to use a pre-configured make file for testing? [Y / N]"
+    read -p "Enter the option: " option
+
+    if [[ "$option" == 'Y' ]]; then
+        chooseCCompiler
+    fi
 
     removeMusgraviteRepo
 }
@@ -67,12 +111,18 @@ musgraviteC() {
 musgraviteCpp() {
     createWorkSpace
 
-
     if [ -f ./musgravite/musgravite.hpp ]; then
         mv ./musgravite/musgravite.hpp ../_libs/musgravite
     else
         echo "Error: File 'musgravite.hpp' not found."
         return 1
+    fi
+
+    echo "Do you want to use a pre-configured make file for testing? [Y / N]"
+    read -p "Enter the option: " option
+
+    if [[ "$option" == 'Y' ]]; then
+        chooseCppCompiler
     fi
 
     removeMusgraviteRepo

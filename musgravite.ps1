@@ -105,6 +105,27 @@ function Musgravite-C {
 
 
 
+function Musgravite-Cpp {
+    Create-WorkSpace
+
+    if (Test-Path ".\musgravite\musgravite.hpp" -PathType Leaf) {
+        Move-Item -Path ".\musgravite\musgravite.hpp" -Destination "..\_libs\musgravite"
+    }
+    else {
+        Write-Host "Error: File 'musgravite.hpp' not found."
+        return
+    }
+
+    $option = Read-Host "Do you want to use a pre-configured make file for testing? [Y / N]"
+    if ($option -eq 'Y') {
+        Choose-Cpp-Compiler
+    }
+
+    Remove-Musgravite-Repo
+}
+
+
+
 
 
 param(

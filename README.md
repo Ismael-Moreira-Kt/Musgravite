@@ -35,3 +35,8 @@ Macros available for checking conditions in tests:
 - **ASSERT_NEAR:** Checks if two values are close within a tolerance.
 - **ASSERT_THROW:** Checks if an exception is thrown.
 - **ASSERT_NO_THROW:** Checks that no exception is thrown.
+
+
+
+## License
+Distributed under the MIT license. See the [LICENSE](./LICENSE) file for more details.

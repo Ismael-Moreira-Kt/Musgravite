@@ -82,6 +82,18 @@ musgraviteCpp() {
 
 
 
+if [ "$1" == "-c" ]; then
+    musgraviteC
+    exit 0
+elif [ "$1" == "-cpp" ]; then
+    musgraviteCpp
+    exit 0
+fi
+
+
+
+
+
 while true; do
     display_menu
 

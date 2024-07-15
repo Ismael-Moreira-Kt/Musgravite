@@ -52,3 +52,30 @@ void printColored(const std::string& message, const std::string& color = "") {
         std::cout << message << std::endl;
     }
 }
+
+
+
+
+
+class Musgravite {
+    public:
+        Musgravite(
+            const std::string& name,
+            std::function<void()> func,
+            std::function<void()> setup = nullptr,
+            std::function<void()> teardown = nullptr,
+            std::chrono::seconds timeout = std::chrono::seconds(30)
+        ) :
+            name(name),
+            func(func),
+            setup(setup),
+            teardown(teardown),
+            timeout(timeout)
+        {}
+}
+
+
+
+
+
+#endif

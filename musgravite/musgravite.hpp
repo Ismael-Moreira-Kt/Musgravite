@@ -72,6 +72,55 @@ class Musgravite {
             teardown(teardown),
             timeout(timeout)
         {}
+
+
+        void run() const {
+            try {
+                if (setup) setup();
+
+                auto start = std::chrono::high_resolution_clock::now();
+                bool asyncTest = isAsyncTest(func);
+
+                if (asyncTest) {
+                    std::promise<void> promise;
+                    auto future = promise.get_future();
+
+                    std::thread asyncThread([&]() {
+                        try {
+                            func();
+                            promise.set_value();
+                        } catch (...) {
+                            promise.set_exception(std::current_exception());
+                        }
+                    });
+
+                    auto status = future.wait_for(timeout);
+
+                    if (status == std::future_status::timeout) {
+                        asyncThread.detach();
+                    
+                        throw std::runtime_error("Async test timed out.");
+                    } else {
+                        asyncThread.join();
+                    }
+                } else {
+                    func();
+                }
+
+                auto end = std::chrono::high_resolution_clock::now();
+
+                std::chrono::duration<double, std::milli> duration = end - start; // Duration in milliseconds
+                printColored("Test " + name + " passed in " + std::to_string(duration.count()) + " milliseconds.", GREEN);
+
+                if (teardown) teardown();
+            } catch (const std::exception& exception) {
+                printColored("Test " + name + " failed: " + exception.what(), RED);
+
+                if (teardown) teardown();
+
+                throw;
+            }
+        }
 }
 
 

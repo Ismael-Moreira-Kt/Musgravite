@@ -255,5 +255,71 @@ class MusgraviteRunner {
 
 
 
+#define ASSERT_TRUE(cond) \
+    if (!(cond)) { \
+        std::stringstream ss; \
+        ss << "Assertion failed: " << #cond << ", file " << __FILE__ << ", line " << __LINE__; \
+        throw std::runtime_error(ss.str()); \
+    }
+
+
+#define ASSERT_FALSE(cond) \
+    if (cond) { \
+        std::stringstream ss; \
+        ss << "Assertion failed: " << #cond << " is true, file " << __FILE__ << ", line " << __LINE__; \
+        throw std::runtime_error(ss.str()); \
+    }
+
+
+#define ASSERT_EQUAL(expected, actual) \
+    if ((expected) != (actual)) { \
+        std::stringstream ss; \
+        ss << "Assertion failed: expected " << (expected) << ", got " << (actual) << ", file " << __FILE__ << ", line " << __LINE__; \
+        throw std::runtime_error(ss.str()); \
+    }
+
+
+#define ASSERT_NOT_EQUAL(expected, actual) \
+    if ((expected) == (actual)) { \
+        std::stringstream ss; \
+        ss << "Assertion failed: expected not " << (expected) << ", but got " << (actual) << ", file " << __FILE__ << ", line " << __LINE__; \
+        throw std::runtime_error(ss.str()); \
+    }
+
+
+#define ASSERT_NEAR(expected, actual, tol) \
+    if (std::fabs((expected) - (actual)) > (tol)) { \
+        std::stringstream ss; \
+        ss << "Assertion failed: expected near " << (expected) << ", got " << (actual) << ", with tolerance " << (tol) << ", file " << __FILE__ << ", line " << __LINE__; \
+        throw std::runtime_error(ss.str()); \
+    }
+
+
+#define ASSERT_THROW(statement, exception_type) \
+    try { \
+        statement; \
+        std::stringstream ss; \
+        ss << "Assertion failed: expected exception " << #exception_type << ", but no exception thrown, file " << __FILE__ << ", line " << __LINE__; \
+        throw std::runtime_error(ss.str()); \
+    } catch (const exception_type&) { \
+    } catch (...) { \
+        std::stringstream ss; \
+        ss << "Assertion failed: expected exception " << #exception_type << ", but a different exception was thrown, file " << __FILE__ << ", line " << __LINE__; \
+        throw std::runtime_error(ss.str()); \
+    }
+
+
+#define ASSERT_NO_THROW(statement) \
+    try { \
+        statement; \
+    } catch (...) { \
+        std::stringstream ss; \
+        ss << "Assertion failed: expected no exception, but an exception was thrown, file " << __FILE__ << ", line " << __LINE__; \
+        throw std::runtime_error(ss.str()); \
+    }
+
+
+
+
 
 #endif

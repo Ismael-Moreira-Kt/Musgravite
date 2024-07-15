@@ -121,6 +121,11 @@ class Musgravite {
                 throw;
             }
         }
+
+
+        std::string getName() const {
+            return name;
+        }
 }
 
 

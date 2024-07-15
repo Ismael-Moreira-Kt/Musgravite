@@ -12,6 +12,25 @@ function Display-Menu {
 
 
 
+param(
+    [string]$arg = ""
+)
+
+
+
+if ($arg -eq "-c") {
+    Musgravite-C
+    exit 0
+}
+elseif ($arg -eq "-cpp") {
+    Musgravite-Cpp
+    exit 0
+}
+
+
+
+
+
 while ($true) {
     Display-Menu
 

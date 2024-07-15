@@ -1,0 +1,71 @@
+# Musgravite implementation in C
+Welcome to the Musgravite C Implementation Guide! Here, you'll learn how to integrate and use the Musgravite library in your C project in a simple way.
+
+<br>
+
+## Cloning Musgravite
+The first step is to clone the Musgravite repository into your C project.
+
+```shell
+    git clone --branch v0.2.0 --single-branch https://github.com/Ismael-Moreira-Kt/Musgravite
+```
+
+**Tip:** You can download any version you like. Just replace v0.2.0 with the desired version from the tags in the repository.
+
+<br>
+
+## Manual versus Automatic
+Before I go any further, you need to decide: do you want to do everything manually or use the installation scripts I've lovingly made? Although I think you're a monster and I'll never forgive you if you do it manually, I still need to give you some information before you decide to use the scripts I've made.
+
+#### Advantages of using the library manually
+You'll have more control over what's in your project and what isn't, as you can define your workflow and even which files will be kept or not.
+
+#### Advantages of using automation scripts
+Automation scripts have several advantages. They define a workflow automatically, creating _libs folders to add the library headers and scripts and _tests folders for... the tests? <br>
+You can also create a make to compile the tests automatically with compilers like gcc and clang. <br>
+Finally, they remove all the files that aren't necessary for your project, minimizing the space taken up.
+
+<br>
+
+## Use the library manually
+Okay, knowing the advantages of each approach, if you still want to use it manually... I hate you, but I accept. 
+
+
+#### Linux and MacOS
+```bash
+    mv musgravite/musgravite.hpp path/to/the/chosen/directory
+    mv musgravite/'C Wrapper'/musgravite.h path/to/the/chosen/directory
+    mv musgravite/'C Wrapper'/musgraviteImpl.cpp path/to/the/chosen/directory
+```
+
+
+#### Windows
+```powershell
+    Move-Item -Path "musgravite/musgravite.hpp" -Destination "path/to/the/chosen/directory"
+    Move-Item -Path musgravite/'C Wrapper'/musgravite.h -Destination "path/to/the/chosen/directory"
+    Move-Item -Path musgravite/'C Wrapper'/musgraviteImpl.cpp -Destination "path/to/the/chosen/directory"
+```
+
+<br>
+
+## Use the library with installation script
+The installation script is much simpler, but requires you to read the terminal. <br>
+If you want to know more about what installers do, you can read the [installer guide](../Installers/).
+
+#### Linux and MacOS
+```bash
+    chmod +x musgravite.sh
+    ./musgravite.sh
+```
+
+#### Windows
+```powershell
+    ./musgravite.ps1
+```
+
+If there is a permission problem when running the script, you can follow this procedure.
+
+```powershell
+    Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+    ./musgravite.ps1
+```

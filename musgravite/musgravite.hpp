@@ -126,6 +126,15 @@ class Musgravite {
         std::string getName() const {
             return name;
         }
+
+
+
+    private:
+        std::string name;
+        std::function<void()> func;
+        std::function<void()> setup;
+        std::function<void()> teardown;
+        std::chrono::seconds timeout;
 }
 
 

@@ -47,3 +47,25 @@ Okay, knowing the advantages of each approach, if you still want to use it manua
 ```
 
 <br>
+
+## Use the library with installation script
+The installation script is much simpler, but requires you to read the terminal. <br>
+If you want to know more about what installers do, you can read the [installer guide](../Installers/).
+
+#### Linux and MacOS
+```bash
+    chmod +x musgravite.sh
+    ./musgravite.sh
+```
+
+#### Windows
+```powershell
+    ./musgravite.ps1
+```
+
+If there is a permission problem when running the script, you can follow this procedure.
+
+```powershell
+    Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+    ./musgravite.ps1
+```

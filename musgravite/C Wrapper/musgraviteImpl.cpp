@@ -132,4 +132,10 @@ extern "C" {
         
         global_runner->runner.addTest(suite, test, func, setup, teardown, std::chrono::seconds(timeout));
     }
+
+
+
+    void IGNORE_TEST_C(const char* test) {
+        printColored(std::string("Test ") + test + " ignored.", YELLOW);
+    }
 }

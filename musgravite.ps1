@@ -1,0 +1,26 @@
+function Display-Menu {
+    Write-Host "`n`n-------------------- Musgravite --------------------`n"
+    Write-Host "1) Use musgravite with C"
+    Write-Host "2) Use musgravite with C++"
+    Write-Host "3) Use musgravite with D"
+    Write-Host "4) Use musgravite with Nim"
+    Write-Host "0) Exit"
+    Write-Host "`n----------------------------------------------------`n`n"
+}
+
+
+
+
+
+while ($true) {
+    Display-Menu
+
+    $option = Read-Host "Enter the option number"
+
+    switch ($option) {
+        1 { Musgravite-C }
+        2 { Musgravite-Cpp }
+        0 { Write-Host "Exiting..."; exit 0 }
+        Default { Write-Host "Invalid option. Please try again." }
+    }
+}

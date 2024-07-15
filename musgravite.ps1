@@ -76,6 +76,35 @@ function Remove-Musgravite-Repo {
 
 
 
+function Musgravite-C {
+    Create-WorkSpace
+
+    if (Test-Path ".\musgravite\C Wrapper" -PathType Container) {
+        Move-Item -Path ".\musgravite\C Wrapper\*" -Destination "..\_libs\musgravite"
+    }
+    else {
+        Write-Host "Error: Directory 'C Wrapper' not found."
+        return
+    }
+
+    if (Test-Path ".\musgravite\musgravite.hpp" -PathType Leaf) {
+        Move-Item -Path ".\musgravite\musgravite.hpp" -Destination "..\_libs\musgravite"
+    }
+    else {
+        Write-Host "Error: File 'musgravite.hpp' not found."
+        return
+    }
+
+    $option = Read-Host "Do you want to use a pre-configured make file for testing? [Y / N]"
+    if ($option -eq 'Y') {
+        Choose-C-Compiler
+    }
+
+    Remove-Musgravite-Repo
+}
+
+
+
 
 
 param(

@@ -238,6 +238,17 @@ class MusgraviteRunner {
 
 
 
+#define ADD_TEST(runner, suite, test) runner.addTest(suite, #test, test)
+#define ADD_TEST_TIMEOUT(runner, suite, test, timeout) runner.addTest(suite, #test, test, nullptr, nullptr, timeout)
+#define ADD_TEST_SETUP(runner, suite, test, setup) runner.addTest(suite, #test, test, setup, nullptr)
+#define ADD_TEST_SETUP_TEARDOWN(runner, suite, test, setup, teardown) runner.addTest(suite, #test, test, setup, teardown)
+#define ADD_TEST_SETUP_TIMEOUT(runner, suite, test, setup, timeout) runner.addTest(suite, #test, test, setup, nullptr, timeout)
+#define ADD_TEST_TEARDOWN(runner, suite, test, teardown) runner.addTest(suite, #test, test, nullptr, teardown)
+#define ADD_TEST_TEARDOWN_TIMEOUT(runner, suite, test, teardown, timeout) runner.addTest(suite, #test, test, nullptr, teardown, timeout)
+#define ADD_TEST_SETUP_TEARDOWN_TIMEOUT(runner, suite, test, setup, teardown, timeout) runner.addTest(suite, #test, test, setup, teardown, timeout)
+
+
+
 
 
 #endif

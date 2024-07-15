@@ -5,17 +5,13 @@
 
 
 display_menu() {
-    echo -e "\n\n"
-    echo "-------------------- Musgravite --------------------"
-    echo -e "\n"
+    echo -e "\n\n-------------------- Musgravite --------------------\n"
     echo "1) Use musgravite with C"
     echo "2) Use musgravite with C++"
     echo "3) Use musgravite with D"
     echo "4) Use musgravite with Nim"
     echo "0) Exit"
-    echo -e "\n"
-    echo "----------------------------------------------------"
-    echo -e "\n\n"
+    echo -e "\n----------------------------------------------------\n\n"
 }
 
 
@@ -73,7 +69,11 @@ removeMusgraviteRepo() {
     read -p "Enter the option: " option
 
     if [[ "$option" == 'Y' ]]; then
-        cd .. && rm -r Musgravite
+        if [ -d "../Musgravite" ]; then
+            rm -r ../Musgravite
+        else
+            echo "Musgravite repository not found."
+        fi
     fi
 }
 

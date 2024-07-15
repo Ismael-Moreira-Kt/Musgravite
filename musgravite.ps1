@@ -10,6 +10,20 @@ function Display-Menu {
 
 
 
+function Create-WorkSpace {
+    $musgravitePath = Join-Path "..\_libs" "musgravite"
+    $testsPath = Join-Path "..\_tests"
+
+    if (!(Test-Path $musgravitePath)) {
+        New-Item -ItemType Directory -Path $musgravitePath | Out-Null
+    }
+    if (!(Test-Path $testsPath)) {
+        New-Item -ItemType Directory -Path $testsPath | Out-Null
+    }
+}
+
+
+
 
 
 param(

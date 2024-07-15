@@ -223,6 +223,11 @@ class MusgraviteRunner {
             printColored("Total time for all suites: " + std::to_string(totalTime) + " milliseconds.", BLUE);
             printColored("Overall average time per test: " + std::to_string(overallAverageTime) + " milliseconds.", RESET);
         }
+
+
+
+    private:
+        std::map<std::string, std::vector<Musgravite>> suites;
 }
 
 

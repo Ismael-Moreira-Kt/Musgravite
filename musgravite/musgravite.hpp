@@ -234,4 +234,10 @@ class MusgraviteRunner {
 
 
 
+#define TEST(name) void name()
+
+
+
+
+
 #endif

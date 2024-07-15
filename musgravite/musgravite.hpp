@@ -41,3 +41,14 @@ bool useColor = true;
 void disableColors() {
     useColor = false;
 }
+
+
+
+void printColored(const std::string& message, const std::string& color = "") {
+    if (useColor) {
+        std::cout << color << message << RESET << std::endl;
+    } 
+    else {
+        std::cout << message << std::endl;
+    }
+}

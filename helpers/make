@@ -1,0 +1,16 @@
+CFLAGS := -I./_libs
+
+SOURCES := $(wildcard _tests/*.c)
+OBJECTS := $(SOURCES:.c=.o)
+EXECUTABLE := tests
+
+all: $(EXECUTABLE)
+
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(CFLAGS) $^ -o $@
+
+_tests/%.o: _tests/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	rm -f _tests/*.o $(EXECUTABLE)

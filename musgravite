@@ -63,6 +63,22 @@ musgraviteC() {
 
 
 
+musgraviteCpp() {
+    createWorkSpace
+
+
+    if [ -f ./musgravite/musgravite.hpp ]; then
+        mv ./musgravite/musgravite.hpp ../_libs/musgravite
+    else
+        echo "Error: File 'musgravite.hpp' not found."
+        return 1
+    fi
+
+    removeMusgraviteRepo
+}
+
+
+
 
 
 while true; do
@@ -72,6 +88,7 @@ while true; do
 
     case $option in
         1) musgraviteC ;;
+        2) musgraviteCpp ;;
         0) echo "Exiting..."; exit 0 ;;
         *) echo "Invalid option. Please try again." ;;
     esac

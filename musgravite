@@ -26,8 +26,22 @@ createWorkSpace() {
 
 
 
+removeMusgraviteRepo() {
+    echo "The installation was successful."
+    echo "Do you want to remove the official musgravite repository from your workflow? [Y / N]"
+
+    read -p "Enter the option number: " option
+
+    if $option == 'Y':
+        cd .. && rm -r Musgravite
+    fi
+}
+
+
+
 musgraviteC() {
     createWorkSpace
+
 
     if [ -f ./musgravite/'C Wrapper' ]; then
         mv ./musgravite/'C Wrapper'/* ../_libs/musgravite/
@@ -42,6 +56,9 @@ musgraviteC() {
         echo "Error: File 'musgravite.hpp' not found."
         return 1
     fi
+
+
+    removeMusgraviteRepo
 }
 
 

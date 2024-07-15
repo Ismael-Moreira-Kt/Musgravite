@@ -52,4 +52,84 @@ extern "C" {
 
         global_runner->runner.runAllTests();
     }
+
+
+
+    void ADD_TEST_C(const char* suite, const char* test, void (*func)(void)) {
+        if (global_runner == nullptr) {
+            return;
+        }
+
+        global_runner->runner.addTest(suite, test, func);
+    }
+
+
+
+    void ADD_TEST_TIMEOUT_C(const char* suite, const char* test, void (*func)(void), int timeout) {
+        if (global_runner == nullptr) {
+            return;
+        }
+        
+        global_runner->runner.addTest(suite, test, func, nullptr, nullptr, std::chrono::seconds(timeout));
+    }
+
+
+
+    void ADD_TEST_SETUP_C(const char* suite, const char* test, void (*func)(void), void (*setup)(void)) {
+        if (global_runner == nullptr) {
+            return;
+        }
+        
+        global_runner->runner.addTest(suite, test, func, setup);
+    }
+
+
+
+    void ADD_TEST_SETUP_TEARDOWN_C(const char* suite, const char* test, void (*func)(void), void (*setup)(void), void (*teardown)(void)) {
+        if (global_runner == nullptr) {
+            return;
+        }
+        
+        global_runner->runner.addTest(suite, test, func, setup, teardown);
+    }
+
+
+
+    void ADD_TEST_SETUP_TIMEOUT_C(const char* suite, const char* test, void (*func)(void), void (*setup)(void), int timeout) {
+        if (global_runner == nullptr) {
+            return;
+        }
+        
+        global_runner->runner.addTest(suite, test, func, setup, nullptr, std::chrono::seconds(timeout));
+    }
+
+
+
+    void ADD_TEST_TEARDOWN_C(const char* suite, const char* test, void (*func)(void), void (*teardown)(void)) {
+        if (global_runner == nullptr) {
+            return;
+        }
+        
+        global_runner->runner.addTest(suite, test, func, nullptr, teardown);
+    }
+
+
+
+    void ADD_TEST_TEARDOWN_TIMEOUT_C(const char* suite, const char* test, void (*func)(void), void (*teardown)(void), int timeout) {
+        if (global_runner == nullptr) {
+            return;
+        }
+        
+        global_runner->runner.addTest(suite, test, func, nullptr, teardown, std::chrono::seconds(timeout));
+    }
+
+
+
+    void ADD_TEST_SETUP_TEARDOWN_TIMEOUT_C(const char* suite, const char* test, void (*func)(void), void (*setup)(void), void (*teardown)(void), int timeout) {
+        if (global_runner == nullptr) {
+            return;
+        }
+        
+        global_runner->runner.addTest(suite, test, func, setup, teardown, std::chrono::seconds(timeout));
+    }
 }

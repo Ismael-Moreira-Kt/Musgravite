@@ -1,9 +1,3 @@
-#!/bin/bash
-
-
-
-
-
 display_menu() {
     echo -e "\n\n-------------------- Musgravite --------------------\n"
     echo "1) Use musgravite with C"

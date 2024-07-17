@@ -112,3 +112,31 @@ Asserts that two floating-point numbers are nearly equal within a tolerance.
 ```
 - **Near Check:** Compares expected and actual within the specified tolerance tol. If they are not nearly equal, an error message is generated.
 - **Error Message:** Includes the expected value, actual value, tolerance, file name, and line number.
+
+### ASSERT_THROW_C
+Asserts that a function throws a specified exception.
+
+```C
+    ASSERT_THROW_C(statement, "exceptionType", __FILE__, __LINE__);
+```
+
+##### Implementation
+```Cpp
+    void ASSERT_THROW_C(void (*statement)(void), const char* exception_type, const char* file, int line) {
+        try {
+            statement();
+            
+            std::stringstream ss;
+            ss << "Assertion failed: expected exception " << exception_type << ", but no exception thrown, file " << file << ", line " << line;
+            
+            throw std::runtime_error(ss.str());
+        } catch (const std::exception& e) {} catch (...) {
+            std::stringstream ss;
+            ss << "Assertion failed: expected exception " << exception_type << ", but a different exception was thrown, file " << file << ", line " << line;
+            
+            throw std::runtime_error(ss.str());
+        }
+    }
+```
+- **Exception Check:** Executes statement and checks if it throws an exception of type exception_type. If not, an error message is generated.
+- **Error Message:** Includes the expected exception type, file name, and line number.

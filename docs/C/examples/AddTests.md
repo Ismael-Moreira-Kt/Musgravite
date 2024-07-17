@@ -21,3 +21,10 @@ To add a test with a timeout:
 ```C    
     ADD_TEST_TIMEOUT_C("suiteName", "testName", testFunction, timeoutInSeconds);
 ```
+
+### Test with Setup
+To add a test with a setup function:
+
+```C    
+    ADD_TEST_SETUP_C("suiteName", "testName", testFunction, setupFunction);
+```

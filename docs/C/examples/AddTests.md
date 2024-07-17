@@ -28,3 +28,10 @@ To add a test with a setup function:
 ```C    
     ADD_TEST_SETUP_C("suiteName", "testName", testFunction, setupFunction);
 ```
+
+### Test with Teardown
+To add a test with a teardown function:
+
+```C    
+    ADD_TEST_TEARDOWN_C("suiteName", "testName", testFunction, teardownFunction);
+```

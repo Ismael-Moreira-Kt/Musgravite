@@ -14,3 +14,7 @@ To implement runner initialization, simply call the function:
 ```C
     initializeMusgraviteRunner();
 ```
+
+I've done my best to make the implementation of the class as simple as possible, which is why the `initializeMusgraviteRunner()` abstraction exists. It's important to remember a few points:
+1. The `initializeMusgraviteRunner` method is mandatory; without it, you can't run the tests.
+2. This method must be followed by `cleanupMusgraviteRunner` at the end of the tests. See the [`cleanupMusgraviteRunner` documentation](./cleanupMusgraviteRunner.md) for more details.

@@ -9,3 +9,7 @@ Musgravite in C is actually a wrapper. In other words, it's a library made for C
 
 #### Project root
 - **musgravite.hpp ->** This is the most important file, the “father” of them all. It is the C++ header that defines what each file should do and how it should be implemented.
+
+
+#### musgravite/C Wrapper
+- **musgravite.h ->** This is the C header. It provides instructions on what can be implemented and how it should be implemented in C.

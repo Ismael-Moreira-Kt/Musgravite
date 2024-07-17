@@ -93,3 +93,16 @@ To add a test with setup, teardown, and timeout:
 ```
 
 - *Timeout parameter:* Adds a timeout to the test in addition to the basic test addition steps.
+
+### Test with Setup
+```Cpp
+    void ADD_TEST_SETUP_C(const char* suite, const char* test, void (*func)(void), void (*setup)(void)) {
+        if (global_runner == nullptr) {
+            return;
+        }
+
+        global_runner->runner.addTest(suite, test, func, setup);
+    }
+```
+
+- **Setup function:** Adds a setup function to be called before the test runs.

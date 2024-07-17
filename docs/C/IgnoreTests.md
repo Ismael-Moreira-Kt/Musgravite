@@ -8,3 +8,13 @@ In this tutorial, you'll learn everything you need to know about the `IGNORE_TES
 
 <br>
 
+## Implementing IGNORE_TEST_C
+To ignore a test, simply call the function:
+
+```C
+    IGNORE_TEST_C("testName");
+```
+
+This function can be used anywhere in your test code where you need to skip a test and provide a visual indication of the skipped test.
+
+<br>

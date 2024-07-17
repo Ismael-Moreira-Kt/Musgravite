@@ -165,3 +165,8 @@ To add a test with setup, teardown, and timeout:
 - **Setup, Teardown, and Timeout:** Combines setup function, teardown function, and timeout for the test.
 
 <br>
+
+## Important Notes
+- **Initialization Requirement:** Ensure that `initializeMusgraviteRunner` is called before using any of the `ADD_TEST_C` functions to properly initialize the `global_runner`.
+- **Safety Checks:** Each function checks if `global_runner` is *null* before attempting to add a test, ensuring that no operations are performed on an uninitialized runner.
+- **Function Variants:** Choose the appropriate function variant based on the requirements of your test, such as the need for setup, teardown, and/or timeout.

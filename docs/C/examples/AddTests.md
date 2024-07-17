@@ -80,3 +80,16 @@ To add a test with setup, teardown, and timeout:
 
 - **Null pointer check:** Checks if `global_runner` is *null*.
 - **Test addition:** Adds the test to the `runner` if `global_runner` is initialized.
+
+### Test with Timeout
+```Cpp
+    void ADD_TEST_TIMEOUT_C(const char* suite, const char* test, void (*func)(void), int timeout) {
+        if (global_runner == nullptr) {
+            return;
+        }
+
+        global_runner->runner.addTest(suite, test, func, nullptr, nullptr, std::chrono::seconds(timeout));
+    }
+```
+
+- *Timeout parameter:* Adds a timeout to the test in addition to the basic test addition steps.

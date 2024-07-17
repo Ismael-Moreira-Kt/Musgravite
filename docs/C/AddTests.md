@@ -139,3 +139,15 @@ To add a test with setup, teardown, and timeout:
     }
 ```
 - **Setup function and Timeout:** Combines setup function and timeout for the test.
+
+### Test with Teardown and Timeout
+```Cpp
+    void ADD_TEST_TEARDOWN_TIMEOUT_C(const char* suite, const char* test, void (*func)(void), void (*teardown)(void), int timeout) {
+        if (global_runner == nullptr) {
+            return;
+        }
+
+        global_runner->runner.addTest(suite, test, func, nullptr, teardown, std::chrono::seconds(timeout));
+    }
+```
+- **Teardown function and Timeout:** Combines teardown function and timeout for the test.

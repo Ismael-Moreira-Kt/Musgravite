@@ -16,7 +16,7 @@ Asserts that a condition is true.
     ASSERT_TRUE_C(cond, "condition", __FILE__, __LINE__);    
 ```
 
-#### Implementation
+##### Implementation
 ```Cpp
     void ASSERT_TRUE_C(int cond, const char* cond_str, const char* file, int line) {
         if (!cond) {
@@ -28,4 +28,25 @@ Asserts that a condition is true.
     }
 ```
 - **Condition Check:** Checks if cond is true. If not, an error message is generated.
+- **Error Message:** Includes the condition string, file name, and line number.
+
+### ASSERT_FALSE_C
+Asserts that a condition is false.
+
+```C
+    ASSERT_FALSE_C(cond, "condition", __FILE__, __LINE__);   
+```
+
+##### Implementation
+```Cpp
+    void ASSERT_FALSE_C(int cond, const char* cond_str, const char* file, int line) {
+        if (cond) {
+            std::stringstream ss;
+            ss << "Assertion failed: " << cond_str << " is true, file " << file << ", line " << line;
+            
+            throw std::runtime_error(ss.str());
+        }
+    }
+```
+- **Condition Check:** Checks if cond is false. If not, an error message is generated.
 - **Error Message:** Includes the condition string, file name, and line number.

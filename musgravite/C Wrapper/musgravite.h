@@ -40,7 +40,7 @@
             void ASSERT_NEAR_C(double expected, double actual, double tol, const char* file, int line);
             void ASSERT_THROW_C(void (*statement)(void), const char* exception_type, const char* file, int line);
             void ASSERT_NO_THROW_C(void (*statement)(void), const char* file, int line);
-        #ifdef
+        #ifdef __cplusplus
     }
 #endif
 

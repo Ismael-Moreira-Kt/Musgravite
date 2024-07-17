@@ -34,3 +34,9 @@ Here is the implementation of the *runAllTestsC* function:
 
 - **Null pointer check:** The function first checks if `global_runner` is *null*. If `global_runner` is *null*, the function returns immediately without attempting to run the tests.
 - **Running all tests:** If `global_runner` is *not null*, it calls the `runAllTests` method on the `MusgraviteRunner object` to execute all the defined tests.
+
+<br>
+
+## Important Notes
+- **Initialization Requirement:** Ensure that `initializeMusgraviteRunner` is called before `runAllTestsC` to properly initialize the `global_runner`. Without this, the tests will not run.
+- **Cleanup Requirement:** After calling `runAllTestsC`, make sure to call `cleanupMusgraviteRunner` to free up resources and avoid memory leaks.

@@ -31,3 +31,23 @@ First, we define `global_runner` as a null pointer:
 ```cpp
     static MusgraviteRunnerImpl* global_runner = nullptr;
 ```
+
+
+#### Implementation of the initializeMusgraviteRunner function
+Next, the `initializeMusgraviteRunner` function is implemented as follows:
+
+```cpp
+    void initializeMusgraviteRunner() {
+        if (global_runner == nullptr) {
+            global_runner = (MusgraviteRunnerImpl*)malloc(sizeof(MusgraviteRunnerImpl));
+            
+            if (global_runner != nullptr) {
+                new (&global_runner->runner) MusgraviteRunner();
+            }
+        }
+    }
+```
+
+- **Null pointer check:** We check whether `global_runner` is *null*.
+- **Memory allocation:** If null, we allocate memory for `MusgraviteRunnerImpl`.
+- **Object construction:** If the allocation is successful, we construct a new `MusgraviteRunner` *object* in the allocated space.

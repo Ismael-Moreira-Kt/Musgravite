@@ -162,3 +162,10 @@ Asserts that a function does not throw any exception.
 ```
 - **No Exception Check:** Executes statement and checks that it does not throw any exception. If an exception is thrown, an error message is generated.
 - **Error Message:** Includes the file name and line number.
+
+<br>
+
+## Important Notes
+- **Error Handling:** Each assertion function throws a std::runtime_error with a detailed error message if the assertion fails.
+- **Location Information:** The file name and line number are included in the error message for easier debugging.
+- **Usage Context:** These assertions are meant to be used within test functions to validate various conditions and ensure the correctness of the code.

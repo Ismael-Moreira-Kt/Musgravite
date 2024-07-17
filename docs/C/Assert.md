@@ -140,3 +140,25 @@ Asserts that a function throws a specified exception.
 ```
 - **Exception Check:** Executes statement and checks if it throws an exception of type exception_type. If not, an error message is generated.
 - **Error Message:** Includes the expected exception type, file name, and line number.
+
+### ASSERT_NO_THROW_C
+Asserts that a function does not throw any exception.
+```C
+    ASSERT_NO_THROW_C(statement, __FILE__, __LINE__);
+```
+
+##### Implementation
+```Cpp
+    void ASSERT_NO_THROW_C(void (*statement)(void), const char* file, int line) {
+        try {
+            statement();
+        } catch (...) {
+            std::stringstream ss;
+            ss << "Assertion failed: expected no exception, but an exception was thrown, file " << file << ", line " << line;
+            
+            throw std::runtime_error(ss.str());
+        }
+    }
+```
+- **No Exception Check:** Executes statement and checks that it does not throw any exception. If an exception is thrown, an error message is generated.
+- **Error Message:** Includes the file name and line number.

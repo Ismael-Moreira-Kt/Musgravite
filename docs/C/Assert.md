@@ -50,3 +50,24 @@ Asserts that a condition is false.
 ```
 - **Condition Check:** Checks if cond is false. If not, an error message is generated.
 - **Error Message:** Includes the condition string, file name, and line number.
+
+### ASSERT_EQUAL_C
+Asserts that two integers are equal.
+
+```C
+    ASSERT_EQUAL_C(expected, actual, __FILE__, __LINE__); 
+```
+
+##### Implementation
+```Cpp
+    void ASSERT_EQUAL_C(int expected, int actual, const char* file, int line) {
+        if (expected != actual) {
+            std::stringstream ss;
+            ss << "Assertion failed: expected " << expected << ", got " << actual << ", file " << file << ", line " << line;
+            
+            throw std::runtime_error(ss.str());
+        }
+    }
+```
+- **Equality Check:** Compares expected and actual. If they are not equal, an error message is generated.
+- **Error Message:** Includes the expected value, actual value, file name, and line number.

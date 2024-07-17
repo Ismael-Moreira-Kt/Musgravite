@@ -142,7 +142,7 @@ class Musgravite {
 
             return funcName.size() > 5 && funcName.compare(funcName.size() - 5, 5, "Async") == 0;
         }
-}
+};
 
 
 
@@ -228,7 +228,7 @@ class MusgraviteRunner {
 
     private:
         std::map<std::string, std::vector<Musgravite>> suites;
-}
+};
 
 
 

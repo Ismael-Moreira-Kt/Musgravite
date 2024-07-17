@@ -63,3 +63,20 @@ To add a test with setup, teardown, and timeout:
 ```C
     ADD_TEST_SETUP_TEARDOWN_TIMEOUT_C("suiteName", "testName", testFunction, setupFunction, teardownFunction, timeoutInSeconds);
 ```
+
+<br>
+
+## What do these functions do?
+### Basic Test Addition
+```Cpp
+    void ADD_TEST_C(const char* suite, const char* test, void (*func)(void)) {
+        if (global_runner == nullptr) {
+            return;
+        }
+
+        global_runner->runner.addTest(suite, test, func);
+    }
+```
+
+- **Null pointer check:** Checks if `global_runner` is *null*.
+- **Test addition:** Adds the test to the `runner` if `global_runner` is initialized.

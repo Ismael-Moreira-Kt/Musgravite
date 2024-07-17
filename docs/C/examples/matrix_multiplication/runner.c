@@ -25,3 +25,12 @@ void test_multiplyMatrices(void) {
 
 
 
+void test_displayMatrix(void) {
+    int matrix[2][10] = { {1, 2}, {3, 4} };
+    displayMatrix(matrix, 2, 2);
+}
+
+
+
+
+

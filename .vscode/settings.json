@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "stdio.h": "c",
-        "musgravite.h": "c",
-        "multiplymatrix.h": "c",
-        "stdexcept": "cpp",
-        "matrix_multiplication.h": "c"
-    }
-}

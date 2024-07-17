@@ -7,3 +7,10 @@ In this tutorial, you'll learn everything you need to know about the `ADD_TEST_C
 `ADD_TEST_C` and its variants are functions used to add tests to the `MusgraviteRunner` in the *C* environment. These functions ensure that tests are registered with various configurations such as setup, teardown, and timeout options.
 
 <br>
+
+## Basic Test Addition
+To add a basic test without setup, teardown, or timeout:
+
+```C    
+    ADD_TEST_C("suiteName", "testName", testFunction);
+```

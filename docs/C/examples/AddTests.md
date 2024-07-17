@@ -115,3 +115,15 @@ To add a test with setup, teardown, and timeout:
     }
 ```
 - **Teardown function:** Adds a teardown function to be called after the test runs.
+
+### Test with Setup and Teardown
+```Cpp
+    void ADD_TEST_SETUP_TEARDOWN_C(const char* suite, const char* test, void (*func)(void), void (*setup)(void), void (*teardown)(void)) {
+        if (global_runner == nullptr) {
+            return;
+        }
+
+        global_runner->runner.addTest(suite, test, func, setup, teardown);
+    }
+```
+- **Setup and Teardown functions:** Combines both setup and teardown functions for the test.

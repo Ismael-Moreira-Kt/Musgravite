@@ -13,3 +13,4 @@ Musgravite in C is actually a wrapper. In other words, it's a library made for C
 
 #### musgravite/C Wrapper
 - **musgravite.h ->** This is the C header. It provides instructions on what can be implemented and how it should be implemented in C.
+- **musgraviteImpl.cpp ->** The implementation of musgravite in C. Ironically, it is made in C++, but basically serves as a bridge between your files and the definitions imposed by musgravite.hpp.

@@ -37,3 +37,7 @@ Behind the scenes, while you're calling a simple function, this is what really h
 
 <br>
 
+## Important Notes
+- **Mandatory Cleanup:** Always ensure that `cleanupMusgraviteRunner` is called after all tests have been run. Failing to do so may result in memory leaks and other resource management issues.
+- **Order of Operations:** Call `cleanupMusgraviteRunner` only after `initializeMusgraviteRunner` and all related test functions have completed their execution.
+- **Safety:** By setting `global_runner` to *null* after freeing the memory, we protect against accidental use of freed memory, which could lead to undefined behavior.

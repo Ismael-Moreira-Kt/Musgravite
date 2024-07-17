@@ -92,3 +92,23 @@ Asserts that two integers are not equal.
 ```
 - **Inequality Check:** Compares expected and actual. If they are equal, an error message is generated.
 - **Error Message:** Includes the expected value, actual value, file name, and line number.
+
+### ASSERT_NEAR_C
+Asserts that two floating-point numbers are nearly equal within a tolerance.
+```C 
+    ASSERT_NEAR_C(expected, actual, tol, __FILE__, __LINE__);
+```
+
+##### Implementation
+```Cpp
+    void ASSERT_NEAR_C(double expected, double actual, double tol, const char* file, int line) {
+        if (std::fabs(expected - actual) > tol) {
+            std::stringstream ss;
+            ss << "Assertion failed: expected near " << expected << ", got " << actual << ", with tolerance " << tol << ", file " << file << ", line " << line;
+            
+            throw std::runtime_error(ss.str());
+        }
+    }
+```
+- **Near Check:** Compares expected and actual within the specified tolerance tol. If they are not nearly equal, an error message is generated.
+- **Error Message:** Includes the expected value, actual value, tolerance, file name, and line number.

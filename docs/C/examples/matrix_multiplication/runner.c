@@ -34,3 +34,14 @@ void test_displayMatrix(void) {
 
 
 
+int main() {
+    initializeMusgraviteRunner();
+
+    ADD_TEST_C("MatrixTests", "test_multiplyMatrices", test_multiplyMatrices);
+    ADD_TEST_C("MatrixTests", "test_displayMatrix", test_displayMatrix);
+
+    runAllTestsC();
+    cleanupMusgraviteRunner();
+    
+    return 0;
+}

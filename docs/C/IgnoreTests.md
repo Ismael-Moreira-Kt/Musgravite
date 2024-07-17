@@ -32,3 +32,8 @@ Here is the implementation of the IGNORE_TEST_C function:
 - **Colored Output:** The message is printed in yellow color to highlight the ignored test.
 
 <br>
+
+## Important Notes
+- **Usage Context:** Use IGNORE_TEST_C to skip tests that are not applicable or need to be disabled temporarily. This helps in keeping the test suite clean and avoiding unnecessary failures.
+- **Visual Indication:** The yellow color output provides a clear visual indication in the test results, making it easy to spot ignored tests.
+- **No Impact on Test Execution:** Ignoring a test does not affect the execution of other tests. Only the specified test is skipped, and the rest of the test suite runs as expected.

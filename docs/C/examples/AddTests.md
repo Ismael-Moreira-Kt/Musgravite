@@ -42,3 +42,10 @@ To add a test with both setup and teardown functions:
 ```C    
     ADD_TEST_SETUP_TEARDOWN_C("suiteName", "testName", testFunction, setupFunction, teardownFunction);
 ```
+
+### Test with Setup and Timeout
+To add a test with both setup function and timeout:
+
+```C
+    ADD_TEST_SETUP_TIMEOUT_C("suiteName", "testName", testFunction, setupFunction, timeoutInSeconds);
+```

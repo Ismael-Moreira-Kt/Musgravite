@@ -16,3 +16,21 @@ To execute all tests, simply call the function:
 ```
 
 This function should be called after `initializeMusgraviteRunner` and before `cleanupMusgraviteRunner` to ensure that the tests are run within the appropriate lifecycle of the *test runner*.
+
+<br>
+
+## What does runAllTestsC do?
+Here is the implementation of the *runAllTestsC* function:
+
+```Cpp
+    void runAllTestsC() {
+        if (global_runner == nullptr) {
+            return;
+        }
+
+        global_runner->runner.runAllTests();
+    }
+```
+
+- **Null pointer check:** The function first checks if `global_runner` is *null*. If `global_runner` is *null*, the function returns immediately without attempting to run the tests.
+- **Running all tests:** If `global_runner` is *not null*, it calls the `runAllTests` method on the `MusgraviteRunner object` to execute all the defined tests.

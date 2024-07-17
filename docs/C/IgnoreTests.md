@@ -18,3 +18,17 @@ To ignore a test, simply call the function:
 This function can be used anywhere in your test code where you need to skip a test and provide a visual indication of the skipped test.
 
 <br>
+
+## What does IGNORE_TEST_C do?
+Here is the implementation of the IGNORE_TEST_C function:
+
+```Cpp
+    void IGNORE_TEST_C(const char* test) {
+        printColored(std::string("Test ") + test + " ignored.", YELLOW);
+    }
+```
+
+- **Message Formatting:** The function creates a message string indicating that the specified test is ignored.
+- **Colored Output:** The message is printed in yellow color to highlight the ignored test.
+
+<br>

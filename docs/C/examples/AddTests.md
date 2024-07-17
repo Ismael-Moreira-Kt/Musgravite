@@ -77,7 +77,6 @@ To add a test with setup, teardown, and timeout:
         global_runner->runner.addTest(suite, test, func);
     }
 ```
-
 - **Null pointer check:** Checks if `global_runner` is *null*.
 - **Test addition:** Adds the test to the `runner` if `global_runner` is initialized.
 
@@ -91,7 +90,6 @@ To add a test with setup, teardown, and timeout:
         global_runner->runner.addTest(suite, test, func, nullptr, nullptr, std::chrono::seconds(timeout));
     }
 ```
-
 - *Timeout parameter:* Adds a timeout to the test in addition to the basic test addition steps.
 
 ### Test with Setup
@@ -104,5 +102,16 @@ To add a test with setup, teardown, and timeout:
         global_runner->runner.addTest(suite, test, func, setup);
     }
 ```
-
 - **Setup function:** Adds a setup function to be called before the test runs.
+
+### Test with Teardown
+```Cpp
+    void ADD_TEST_TEARDOWN_C(const char* suite, const char* test, void (*func)(void), void (*teardown)(void)) {
+        if (global_runner == nullptr) {
+            return;
+        }
+
+        global_runner->runner.addTest(suite, test, func, nullptr, teardown);
+    }
+```
+- **Teardown function:** Adds a teardown function to be called after the test runs.

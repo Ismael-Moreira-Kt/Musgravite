@@ -26,3 +26,12 @@ void multiplyMatrices(int firstMatrix[][10], int secondMatrix[][10], int result[
 
 
 
+void displayMatrix(int matrix[][10], int row, int column) {
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < column; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+
+        printf("\n");
+    }
+}

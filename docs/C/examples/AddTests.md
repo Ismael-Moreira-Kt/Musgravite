@@ -14,3 +14,10 @@ To add a basic test without setup, teardown, or timeout:
 ```C    
     ADD_TEST_C("suiteName", "testName", testFunction);
 ```
+
+### Test with Timeout
+To add a test with a timeout:
+
+```C    
+    ADD_TEST_TIMEOUT_C("suiteName", "testName", testFunction, timeoutInSeconds);
+```
